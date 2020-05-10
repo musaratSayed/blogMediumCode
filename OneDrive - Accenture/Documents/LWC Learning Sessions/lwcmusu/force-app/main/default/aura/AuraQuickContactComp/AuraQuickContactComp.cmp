@@ -1,0 +1,30 @@
+<aura:component controller="quickContactApexClass"  implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader" >
+ <aura:attribute name="account" type="Account" />
+ <aura:attribute name="newContact" type="Contact" default="{'sObjectType':'Contact'}" />
+ <aura:attribute name="name" type="Boolean" default="optionalDefault" />
+
+ <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+<lightning:card title="Aura Quick Contact" footer="optionalFooter">
+     
+    <div class="slds-p-around_medium">
+        <lightning:icon iconName="standard:account" alternativeText="acc" />
+        <span>{!v.account.Name}</span>
+    </div>
+
+    <div class="slds-p-around_medium" title="Create New Contact">
+        <lightning:input type="text" name="LastName" label="LastName"
+        value="{!v.newContact.LastName}" required="true"  />
+        <lightning:input type="phone" name="Phone" label="Phone"
+        value="{!v.newContact.Phone}" required="true"  />
+        <lightning:input type="email" name="Email" label="Email"
+        value="{!v.newContact.Email}" required="false"  />
+
+        <lightning:button class="slds-m-top_medium"  variant="brand" label="Save Contact" title="SaveContact" onclick="{!c.handleSave}"/>
+        <lightning:button class="slds-m-top_medium"  variant="brand" label="Cancel" title="CancelContact" onclick="{!c.handleCancel}"/>
+
+    </div>
+ </lightning:card>
+ 
+
+</aura:component>

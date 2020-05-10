@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="LWC- Quick Create Contact">
+        <template if:true={acctReceieved}>
+            <div class="slds-p-around_medium">
+                <lightning-icon icon-name="standard:account" alternative-text="Account" title="Account"></lightning-icon>
+                <span class="slds-p-around_small">{acct.data.Name}</span>
+            </div>
+            <div class="slds-p-around_medium">
+                <lightning-input type="text" name="lastname" label="LastName" data-id="lastname1" onchange={handleInputChange}></lightning-input>
+                <lightning-input type="phone" name="phone" label="Phone" onchange={handleInputChange}></lightning-input>
+                <lightning-input type="email" name="email" label="Email" onchange={handleInputChange}></lightning-input>
+                <br/>
+                <lightning-button class="slds-m-top_medium slds-p-around_medium" label="Save" name="SaveButton" onclick={handleSave} variant="brand"></lightning-button>
+                <lightning-button class="slds-m-top_medium slds-p-around_medium cancel-button" label="Cancel" name="CancelButton" onclick={handleCancel} variant="brand"></lightning-button>
+            </div>
+        </template>
+    </lightning-card>
+</template>
