@@ -1,0 +1,33 @@
+<apex:page controller="StdSetControllerWithPaginationOpps" tabStyle="Opportunity">
+<!--Custom CSS -->
+<style type="text/css">
+    .paginator {
+    height: 1rem;
+    padding: 0.5rem;
+    background-color:yellow;
+    }
+</style>
+  <apex:form id="theForm">
+    <apex:pageBlock title="Opportunities with Std Set Controller Example & Pagination">
+       
+            <apex:pageblockTable value="{!opportunities}" var="o">
+                <apex:column headerValue="Opp Name" value="{!o.Name}"/>
+                <apex:column headerValue="Amount" value="{!o.Amount}"/>
+                <apex:column headerValue="Account" value="{!o.Account.Name}"/>
+                <apex:column headerValue="Close Date" value="{!o.CloseDate}"/>
+            </apex:pageblockTable>
+       
+        <apex:pageBlockSection id="pbsection2">
+            <apex:panelGrid columns="2">
+                <apex:commandLink action="{!objController.previous}" value="Previous" rendered="{!objController.hasPrevious}" />
+                <apex:commandLink action="{!objController.next}" value="Next" rendered="{!objController.hasNext}" />
+            </apex:panelGrid>
+        </apex:pageBlockSection>
+        <div class="paginator">
+        <span>
+            Showing page {!objController.pageNumber} of {!totalPages}
+        </span>
+        </div>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>
